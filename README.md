@@ -1,3 +1,6 @@
+Riley Moorman's Personal Webpage built partially from elements in Prof. MM Ghassemi's <ghassem3@msu.edu> CSE 477 course.
 
-gcloud builds submit --tag gcr.io/cse477-fall-2024/exam
-gcloud run deploy --image gcr.io/cse477-fall-2024/exam --platform managed
+Uploading website to gcloud:
+
+gcloud builds submit --tag gcr.io/personal-webpage-449418/exam
+gcloud run deploy --image gcr.io/personal-webpage-449418/exam --platform managed
