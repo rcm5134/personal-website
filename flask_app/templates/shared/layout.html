@@ -1,0 +1,51 @@
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskTrack</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  
+  <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
+</head>
+
+<body>
+    <article>
+    <!-- The header  -->
+    <header>
+        
+    </header>
+
+    <!-- The navigation bar -->
+    <nav>
+      
+    </nav>
+
+    <!-- The main content  -->
+    <main>
+      {% block maincontent %}{% endblock %}
+    </main>
+
+    </article>
+  
+</body>
+
+</html>
+
+
+
+
+{% block extracss %}{% endblock %}
+<script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+{% block extrajs %}{% endblock %}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+docker-compose -f docker-compose.yml -p final-container up
+
+docker ps
+
+docker exec -it 7225d1be3dfe bash
+
+mysql -u root -p
+
+.
+
+SHOW DATABASES;
+USE mydatabase;
+SHOW TABLES;
+SELECT * FROM table_name;
+
