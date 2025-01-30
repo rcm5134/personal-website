@@ -1,18 +1,15 @@
 {% extends 'shared/layout.html' %}
 
-{% block maincontent %}
-      <div class="space"></div>
 
-      <!-- A block of content -->
-      <div class="centerContainer">      
-        <div class="half-column x-center">
-          <p class="small-txt">
-            
-            <br><br>
-          </p>
-        </div>
+
+{% block maincontent %}
+      <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/home.css') }}">
+
+
+      <div class="mainDiv">
+
       </div>
-      
+
 {% endblock %}
 
 

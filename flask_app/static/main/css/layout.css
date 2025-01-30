@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+.navDiv {
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(to right, #31bfc4, #642aeb);
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.innerNavDiv
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navNameContainer
+{
+    margin: 5px;
+    height: 100%;
+    width: 40%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.navItemsContainer
+{
+    margin: 5px;
+    height: 100%;
+    width: 50%;
+    padding-right: 0px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navNameItem
+{
+    display: flex;
+    overflow: hidden;
+    margin-left: 25px;
+}
+
+.navItem
+{
+    visibility: visible;
+    width: 90px;
+
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.dropdownIconDiv
+{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+    background-color: red;
+}
+
+/*
+    Text
+*/
+
+.navNameText
+{
+    font-size: 2rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+}
+
+.navItemText
+{
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.navItemText:hover
+{
+    font-size: 1.4rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+
+/*
+    Media queries
+*/
+
+@media (max-width: 768px) {
+    .navNameText {
+        font-size: 1.5rem; /* Smaller font size for mobile */
+        color: #ffffff;
+    }
+
+    .navItem
+    {
+        visibility: hidden;
+    }
+
+    .navItemsContainer
+    {
+        margin: 5px;
+        height: 100%;
+        width: 25%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        align-items: center;
+        padding-right: 25px;
+    }
+
+    .dropdownIconDiv
+    {
+        visibility: visible;
+        height: 60px;
+        width: 60px;
+        background-color: red;
+
+        justify-content: center;
+        align-items: center;
+    }
+}
+  
+
+/*
+    Main elements
+*/
+
+html, body {
+    
+    height: 100%;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+  
+article {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content styles */
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent; /* Ensure main doesn't have a conflicting background */
+  }

@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TaskTrack</title>
-  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
-  
+  <title>Riley Moorman</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/layout.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
 </head>
 
@@ -19,7 +19,33 @@
 
     <!-- The navigation bar -->
     <nav>
-      
+      <div class="navDiv">
+        <div class="innerNavDiv">
+            <div class="navNameContainer">
+                <div class="navNameItem">
+                  <a class="navNameText">Riley Moorman</a>
+                </div>
+            </div>
+
+            <div class="navItemsContainer">
+              <div class="navItem">
+                <a class="navItemText">Home</a>
+              </div>
+              <div class="navItem">
+                <a class="navItemText">Projects</a>
+              </div>
+              <div class="navItem">
+                <a class="navItemText">Contact</a>
+              </div>
+
+              <div class="dropdownIconDiv">
+                <img href="{{ url_for('static', filename='main/images/dropdownIcon') }}"" alt="Dropdown icon">
+              </div>
+              
+
+            </div>
+        </div>
+      </div>
     </nav>
 
     <!-- The main content  -->
@@ -36,9 +62,12 @@
 
 
 
-{% block extracss %}{% endblock %}
-<script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
-{% block extrajs %}{% endblock %}
+{% block extracss %}
+
+{% endblock %}
+{% block extrajs %}
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+{% endblock %}
 
 
 
