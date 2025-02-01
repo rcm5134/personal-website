@@ -29,19 +29,34 @@
 
             <div class="navItemsContainer">
               <div class="navItem">
-                <a class="navItemText">Home</a>
+                <a class="navItemText{% if active_page == 'home' %}Active{% endif %}" href="/home">Home</a>
+                
               </div>
               <div class="navItem">
-                <a class="navItemText">Projects</a>
+                <a class="navItemText{% if active_page == 'projects' %}Active{% endif %}" href="/projects">Projects</a>
               </div>
               <div class="navItem">
-                <a class="navItemText">Contact</a>
+                <a class="navItemText{% if active_page == 'contact' %}Active{% endif %}" href="/contact">Contact</a>
+              </div>
+
+              <!-- GitHub Logo Link -->
+              <div class="navItem">
+                <a href="https://github.com/rcm5134" target="_blank" rel="noopener noreferrer">
+                  <img src="{{ url_for('static', filename='main/images/github-mark-white.png') }}" alt="GitHub" class="clickableLogo">
+                </a>
+              </div>
+
+              <!-- linkedIn Logo Link -->
+              <div class="navItem">
+                <a href="https://www.linkedin.com/in/riley-moorman-56392332b/" target="_blank" rel="noopener noreferrer">
+                  <img src="{{ url_for('static', filename='main/images/linkedin-logo.png') }}" alt="LinkedIn" class="clickableLogo">
+                </a>
               </div>
 
               <div class="dropdownIconDiv">
                 <img href="{{ url_for('static', filename='main/images/dropdownIcon') }}"" alt="Dropdown icon">
               </div>
-              
+
 
             </div>
         </div>

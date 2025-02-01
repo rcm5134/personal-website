@@ -245,7 +245,15 @@ def root():
 
 @app.route('/home')
 def home():
-	return render_template('home.html', user=getUser())
+	return render_template('home.html', active_page='home')
+
+@app.route('/projects')
+def projects():
+	return render_template('projects.html', active_page='projects')
+
+@app.route('/contact')
+def contact():
+	return render_template('contact.html', active_page='contact')
 
 @app.route("/static/<path:path>")
 def static_dir(path):
