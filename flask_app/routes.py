@@ -13,93 +13,6 @@ db = database()
 
 
 #######################################################################################
-# AUTHENTICATION RELATED
-#######################################################################################
-def login_required(func):
-    @functools.wraps(func)
-    def secure_function(*args, **kwargs):
-        if "email" not in session:
-            return redirect(url_for("login", next=request.url))
-        return func(*args, **kwargs)
-    return secure_function
-
-def getUser():
-    user = session['email'] if 'email' in session else 'Unknown'
-    if user != 'Unknown':
-        user = db.reversibleEncrypt('decrypt', user)
-    return user
-
-@app.route('/login')
-def login():
-	return render_template('login.html', id=db.getUserCurrentBoard(getUser()))
-
-@app.route('/logout')
-def logout():
-	session.pop('email', default=None)
-	return redirect('/')
-
-@app.route('/processlogin', methods = ["POST","GET"])
-def processlogin():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-   
-    auth = db.authenticate(form_fields['email'], form_fields['password'])
-
-    if auth['success'] == 1:
-        session['email'] = db.reversibleEncrypt('encrypt', form_fields['email']) 
-        return json.dumps({'success':1})
-
-    return json.dumps({'success':0})
-
-def getRole():
-     role = db.getRole(getUser())
-     if role != 'N/A':
-          return role
-     return 'N/A'
-
-@app.route('/signup')
-def signup():
-     return render_template('signup.html', id=db.getUserCurrentBoard(getUser()))
-
-@app.route('/processsignup', methods = ["POST","GET"])
-def processsignup():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-    email = form_fields['email']
-
-    account_exists = db.accountExists(email)
-    # Email is not used and the passwords match
-    if not account_exists and form_fields['password'] == form_fields['confirm']:
-        # Create user
-        print("Creating User:" + email + ", " + form_fields['password'])
-        db.createUser(email, form_fields['password'])
-        return json.dumps({'success':1})
-    
-    # Unknown Error!
-    return json.dumps({'success':0})
-
-#######################################################################################
-# CHAT RELATED
-#######################################################################################
-
-@socketio.on('joined', namespace='/workspace')
-def joined(message):
-    join_room('main')
-    
-    emit('status', {'msg': getUser() + ' has entered the room.', 'style': 'width: 100%;color:gray;text-align: left'}, room='main')
-    
-@socketio.on('message', namespace='/workspace')
-def message(msg):
-
-    emit('status', {'msg': getUser() + ": " + str(msg['message']), 'style': 'width: 100%;color:gray;text-align: left'}, room='main')
-    
-
-@socketio.on('left', namespace='/workspace')
-def left(message):
-
-    emit('status', {'msg': getUser() + ' has left the room.', 'style': 'width: 100%;color:gray; text-align: left'}, room='main')
-    
-    leave_room('main')
-
-#######################################################################################
 # BOARD RELATED
 #######################################################################################
 @app.route('/createboard', methods = ["POST","GET"])
@@ -212,27 +125,6 @@ def createlist():
 
     return json.dumps({'success':1})
 
-@app.route('/createtask', methods = ["POST","GET"])
-def createtask():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-    fields = ['list_id', 'name', 'position']
-    params = [form_fields['list_id'], form_fields['name'], 99]
-
-    db.insertRows('cards', fields, params)
-
-    return json.dumps({'success':1})
-
-@app.route('/loadtask', methods = ["POST","GET"])
-def loadtask():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-
-    list_id = form_fields['list_id']
-
-    query = "SELECT * FROM cards WHERE list_id = {}".format(list_id)
-
-    result = db.query(query)
-
-    return json.dumps({'success':1, 'tasks': result})
 
 
 #######################################################################################

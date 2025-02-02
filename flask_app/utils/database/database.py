@@ -20,7 +20,7 @@ class database:
         self.user           = 'master'
         self.port           = 3306
         self.password       = 'master'
-        self.tables         = []
+        self.tables         = ['projects', 'skills']
         
 
         self.encryption     =  {   'oneway': {'salt' : b'averysaltysailortookalongwalkoffashortbridge',
