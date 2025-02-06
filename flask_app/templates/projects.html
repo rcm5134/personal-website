@@ -1,18 +1,23 @@
 {% extends 'shared/layout.html' %}
 
-
 {% block maincontent %}
-      <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/projects.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='main/css/projects.css') }}">
 
-
-      <div class="projectsContainer">
-            
-            <div class="project" onclick="window.location='https://github.com';">
-                  <a class="projectHeader" href="https://github.com">Pacman AI Maze Search</a>
-                  <img class="pacmanImg" href="https://github.com" src="{{ url_for('static', filename='main/images/pacman.png') }}" alt="Pacman in a maze">
-                  <a class="projectDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</a>
-            </div>
+      <div id="projectsContainer">
           
       </div>
 
+      <div id="filtersContainer">
+          <a class="filterTitle">Filters</a>
+          <div id="filtersInnerContainer">
+            
+        </div>
+      </div>
+
+     
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript" src="../static/main/js/projects.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% endblock %}

@@ -114,96 +114,74 @@ class database:
         return insert_id
 
 #######################################################################################
-# AUTHENTICATION RELATED
+# PROJECT RELATED
 #######################################################################################
-    def createUser(self, email='me@email.com', password='password'):
-        # Check if account exists
-        authentication = self.authenticate(email, password)
-        # account already exists
-        if authentication['success'] == 1:
-            return {'success': 2}
-        # account doesn't exist already
-        if authentication['success'] == 0:
-            # encrypt password
-            password = self.onewayEncrypt(password)
-            self.insertRows('users', ['email', 'password'], [email, password])
-            return {'success': 1}
-        # unknown auth
-        return {'success': 0}
-
-    def authenticate(self, email='me@email.com', password='password'):
-        print("")
-        print("                Authenticating: " + email)
-        # Gather all user data
-        query = f"""SELECT * FROM users"""
-        result = self.query(query)
-        # Encrypt password input to check with stored ecrypted password
-        password = self.onewayEncrypt(password)
-        # For each user in database
-        for row in result:
-            # If there is a matching password and email combo then return 1
-            if email == row['email'] and password == row['password']:
-                print("                Authentication successful.")
-
-                return {'success': 1}
-        # No matching auth found
-        print("                Authentication unsuccessful.")
-        return {'success': 0}
     
-    def getUserCurrentBoard(self, email):
-        query = f"""SELECT email, board_id FROM users"""
-        data = self.query(query)
+    def createProject(self, name, image, description, link, skills):
+        """
+        Author: Riley Moorman, rileycmoorman@gmail.com
 
-        for user in data:
-            if user['email'] == email:
-                print('Curr ID: ', user['board_id'])
-                return user['board_id']
+        Creates a project row in the Projects table
+        Params: 
+            name (string): name of the project
+            image (string): link to the project thumbnail
+            description (string): description of the project
+            link: (string): external link to the project
+            skills (list of string): names of skills used in project (ex: ['C++', 'Python', 'JavaScript'])
 
-        return None
-    
-    def getCurrentBoardName(self, email):
-        boardId = self.getUserCurrentBoard(email)
-
-        if (not boardId):
-            return None
+        Returns: 
+            None
+        """
+        # Insert Project into database
+        self.insertRows(
+            'projects', 
+            ['name', 'image', 'description', 'link'],
+            [name, image, description, link]
+        )
+        # Get the created project id
+        proj_id = self.getProjectID(name)
         
-        query = f"""SELECT board_id, name FROM boards"""
-        result = self.query(query)
+        if proj_id == -1:
+            print("Project name not found!")
+            return
+        
+        # insert each skill into the skill db
+        for skill in skills:
+            self.insertRows(
+                'skills',
+                ['proj_id', 'name'],
+                [proj_id, skill]
+            )
+        
 
-        for board in result:
-            if board['board_id'] == boardId:
-                return board['name']
+    def getProjectID(self, proj_name):
+        """
+        Author: Riley Moorman, rileycmoorman@gmail.com
+
+        Gets the ID of the project row containing the project name as an integer
+        Params: 
+            proj_name (string): name of the project
             
-        return None
-    
-    def accountExists(self, email = ''):
-        query = f"""SELECT email FROM users"""
-        data = self.query(query)
-        # Chech each email to find a matching email
-        for row in data:
-            if row['email'] == email:
-                return True
-        # No match found
-        return False
+        Returns: 
+            Int representing the project ID
+            Returns -1 if there is not project of that name in the table
+        """
 
-    def onewayEncrypt(self, string):
-        encrypted_string = hashlib.scrypt(string.encode('utf-8'),
-                                          salt = self.encryption['oneway']['salt'],
-                                          n    = self.encryption['oneway']['n'],
-                                          r    = self.encryption['oneway']['r'],
-                                          p    = self.encryption['oneway']['p']
-                                          ).hex()
-        return encrypted_string
+        query = f"""SELECT proj_id FROM projects WHERE name = '{proj_name}'"""
 
+        result = self.query(query)
 
-    def reversibleEncrypt(self, type, message):
-        fernet = Fernet(self.encryption['reversible']['key'])
+        if not result:
+            return -1
         
-        if type == 'encrypt':
-            message = fernet.encrypt(message.encode())
-        elif type == 'decrypt':
-            message = fernet.decrypt(message).decode()
+        return result[0]['proj_id']
+    
 
-        return message
+
+
+
+#######################################################################################
+# SKILLS RELATED
+#######################################################################################
 
 

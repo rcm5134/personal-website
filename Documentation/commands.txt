@@ -1,4 +1,4 @@
-docker-compose -f docker-compose.yml -p final-container up
+docker-compose -f docker-compose.yml -p personal-webpage-container up
 
 docker ps
 

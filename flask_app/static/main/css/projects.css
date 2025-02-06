@@ -1,4 +1,4 @@
-.projectsContainer {
+#projectsContainer {
     
     width: 75%;
     height: 500px;
@@ -14,7 +14,70 @@
     
 }
 
-.projectsContainer::-webkit-scrollbar {
+#filtersContainer {
+    width: fit-content;
+    min-height: 50px;
+    height: fit-content;
+    margin-top: 35px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-right: 35px;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    background-image: linear-gradient(to bottom right, #31bfc4, #642aeb);
+
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+}
+
+#filtersInnerContainer 
+{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filterTitle {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+
+}
+
+.filterText {
+    font-size: 1.0rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 5px;
+}
+
+.filterDiv {
+    display: inline-flex;
+    flex-direction: row;
+    justify-items: left;
+    justify-content: left;
+}
+
+.filterCheckbox:hover {
+    cursor: pointer;
+}
+
+
+#projectsContainer::-webkit-scrollbar {
     display: none;
 }
 
@@ -63,7 +126,7 @@
 }
 
 
-.pacmanImg {
+.projImg {
     height: 160px;
     width: 270px;
 
@@ -80,8 +143,11 @@
 
 
 main {
-    align-items: center;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
 }
 
 /*

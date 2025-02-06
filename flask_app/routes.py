@@ -11,119 +11,42 @@ import functools
 from . import socketio
 db = database()
 
-
 #######################################################################################
-# BOARD RELATED
+# PROJECT RELATED
 #######################################################################################
-@app.route('/createboard', methods = ["POST","GET"])
-def createboard():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-    
-    
-    if (form_fields['boardName']):
-        db.insertRows('boards', ['name','background_img'], [form_fields['boardName'], 'background1.png'])
 
-        query = f"""SELECT * FROM boards"""
+@app.route('/loadprojects', methods = ["POST", "GET"])
+def loadprojects():
+    data = request.get_json()  # Extract JSON data properly
+    selected_skills = data.get("filters", []) 
+
+    if not selected_skills:
+        # If no skills are selected, return all projects
+        query = "SELECT * FROM projects"
         result = db.query(query)
-
-        id = None
-
-        for board in result:
-            if (form_fields['boardName'] == board['name']):
-                id = board['board_id']
-
-
-        if (not id):
-            return json.dumps({'success':0})
+    else:
+        # Construct query to find projects that have at least one of the selected skills
+        placeholders = ', '.join(['%s'] * len(selected_skills))  # For IN clause
+        query = f"""
+        SELECT DISTINCT p.*
+        FROM projects p
+        JOIN skills s ON p.proj_id = s.proj_id
+        WHERE s.name IN ({placeholders});
+        """
         
-        query = f"""SELECT * FROM users"""
-        result = db.query(query)
+        result = db.query(query, tuple(selected_skills)) 
+    
+    return json.dumps({'success':1, 'projects': result})
 
-        query = "UPDATE users SET board_id = {}".format(id)
-        db.query(query)
-
-        fields = ['board_id', 'name']
-        params = [id, "To Do"]
-
-        db.insertRows('lists', fields, params)
-
-        params = [id, "Doing"]
-
-        db.insertRows('lists', fields, params)
-
-        params = [id, "Completed"]
-
-        db.insertRows('lists', fields, params)
-
-        # add creator to auth
-        fields = ['board_id', 'email']
-        params = [id, getUser()]
-        db.insertRows('auth', fields, params)
-
-        return json.dumps({'success':1})
-
-    return json.dumps({'success':0})
-
-@app.route('/loadboardoptions')
-def loadboardoptions():
-    user = getUser()
-
-    query = "SELECT board_id, email FROM auth WHERE email = {}".format(user)
-    result = db.query(query)
-
-    return json.dumps({'success':1, 'result': result})
-
-@app.route('/addusertoboard', methods = ["POST","GET"])
-def addusertoboard():
+@app.route('/loadfilters', methods = ["POST", "GET"])
+def loadfilters():
     form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
 
-    print("trying email: ", form_fields['userName'])
-    query = "SELECT email FROM users"
-    result = db.query(query)
-
-    for account in result:
-        print("Trying: " + form_fields['userName'] + " vs: " + account['email'])
-        if (form_fields['userName'] == account['email']):
-            print("Email found!")
-            # add to db
-            fields = ['board_id', 'email']
-            params = [db.getUserCurrentBoard(getUser()), str(form_fields['userName'])]
-            db.insertRows('auth', fields, params)
-            return json.dumps({'success':1})
-
-    return json.dumps({'success':0})
-
-
-@app.route('/loadlist', methods = ["POST","GET"])
-def loadlist():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-
-    id = db.getUserCurrentBoard(getUser())
-
-    query = "SELECT * FROM lists WHERE board_id = {}".format(id)
+    query = "SELECT DISTINCT name FROM skills"
 
     result = db.query(query)
     
-    return json.dumps({'success':1, 'lists': result})
-    
-@app.route('/workspace')
-@login_required
-def workspace():
-     
-    name = db.getCurrentBoardName(getUser())
-    Id = db.getUserCurrentBoard(getUser())
-    
-    return render_template('workspace.html', boardName=name, user=getUser(), id=Id)
-
-@app.route('/createlist', methods = ["POST","GET"])
-def createlist():
-    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
-    fields = ['board_id', 'name']
-    params = [form_fields['board_id'], form_fields['name']]
-
-    db.insertRows('lists', fields, params)
-
-    return json.dumps({'success':1})
+    return json.dumps({'success':1, 'filters': result})
 
 
 
@@ -131,7 +54,6 @@ def createlist():
 # OTHER
 #######################################################################################
 @app.route('/')
-@login_required
 def root():
 	return redirect('/home')
 
