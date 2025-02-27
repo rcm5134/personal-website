@@ -117,7 +117,7 @@ class database:
 # PROJECT RELATED
 #######################################################################################
     
-    def createProject(self, name, image, description, link, skills):
+    def createProject(self, name, image, description, link, featured, skills):
         """
         Author: Riley Moorman, rileycmoorman@gmail.com
 
@@ -135,8 +135,8 @@ class database:
         # Insert Project into database
         self.insertRows(
             'projects', 
-            ['name', 'image', 'description', 'link'],
-            [name, image, description, link]
+            ['name', 'image', 'description', 'link', 'featured'],
+            [name, image, description, link, featured]
         )
         # Get the created project id
         proj_id = self.getProjectID(name)

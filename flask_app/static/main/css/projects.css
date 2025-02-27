@@ -25,8 +25,6 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    margin-right: 35px;
-
     overflow-y: hidden;
     overflow-x: hidden;
 
@@ -34,7 +32,7 @@
 
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
+    justify-content: center;
 }
 
 #filtersInnerContainer 
@@ -102,6 +100,75 @@
 
 .project:hover
 {
+    height: 400px;
+    font-size: 1.4rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+    border-radius: 20px;
+    width: 95%;
+    cursor: pointer;
+}
+
+.projectHeader {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+    transition: font-size 350ms;
+}
+
+
+.projImg {
+    height: 160px;
+    width: 270px;
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    transition: height 350ms, width 350ms;
+}
+
+.projectDescription {
+    font-size: 0.7rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+
+    transition: font-size 350ms;
+}
+
+.project:hover .projectDescription {
+    font-size: 0.9rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.project:hover .projectHeader
+{
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+
+    transition: font-size 350ms;
+}
+
+.project:hover .projImg {
+    height: 176px;
+    width: 297px;
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/*
+. {
     height: 360px;
     font-size: 1.4rem;
     color: #f0ede6;
@@ -113,41 +180,13 @@
 
     background-image: linear-gradient(to top left, #31bfc4, #642aeb);
 }
-
-.projectHeader {
-    font-size: 1.3rem;
-    color: #ffffff;
-    font-family: 'Poppins';
-    text-align: center;
-
-    margin: 10px;
-
-    transition: font-size 350ms;
-}
-
-
-.projImg {
-    height: 160px;
-    width: 270px;
-
-    margin-bottom: 10px;
-}
-
-.projectDescription {
-    font-size: 0.7rem;
-    color: #f0ede6;
-    font-family: 'Poppins';
-    text-align: center;
-}
-
-
-
+*/
 main {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
 
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /*

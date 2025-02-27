@@ -3,7 +3,228 @@
     width: 100%;
     flex-grow: 1;
     display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(10px);
+}
+
+#featuredProjectContainer
+{
+    width: 50%;
+    height: auto;
+
+    display: flex;
     flex-direction: column;
 
-   
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.featuredText 
+{
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+
+    background: cornflowerblue;
+
+    padding: 10px;
+
+    border-radius: 5px;
+}
+
+.featuredProject {
+    
+    height: 350px;
+    width: 50%;
+    margin: 2.5%;
+
+    background-image: linear-gradient(to bottom right, #31bfc4, #642aeb);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    border-radius: 10px;
+    cursor: auto;
+
+    opacity: 0;
+
+    transition: width 350ms, height 350ms, border-radius 350ms, background-image 3s linear, opacity 1s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+}
+
+.featuredProject:hover
+{
+    height: 400px;
+    font-size: 1.4rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+    border-radius: 20px;
+    width: 55%;
+    cursor: pointer;
+}
+
+.projectHeader {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+    transition: font-size 350ms;
+}
+
+
+.projImg {
+    height: 160px;
+    width: 270px;
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    transition: height 350ms, width 350ms;
+}
+
+.projectDescription {
+    font-size: 0.7rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+
+    transition: font-size 350ms;
+}
+
+.featuredProject:hover .projectDescription {
+    font-size: 0.9rem;
+    color: #f0ede6;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.featuredProject:hover .projectHeader
+{
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+
+    transition: font-size 350ms;
+}
+
+.featuredProject:hover .projImg {
+    height: 176px;
+    width: 297px;
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.infoDiv
+{
+    width: 50%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    backdrop-filter: blur(10px);
+}
+
+#progressDiv
+{
+    height: auto;
+    width: auto;
+
+    padding: 2px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-image: linear-gradient(to right, #31bfc4, #642aeb);
+
+    align-items: center;
+}
+
+.gotoProjectsDiv
+{
+    height: auto;
+    width: auto;
+
+    display: flex;
+    flex: row;
+    
+    justify-items: center;
+
+    background-image: linear-gradient(to right, #31bfc4, #642aeb);
+
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+.gotoText
+{
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 10px;
+
+    cursor: pointer;
+
+    text-align: center;
+}
+
+.dot
+{
+    font-size: 2.0rem;
+    color: gainsboro;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 5px;
+    transition: font-size 350ms;
+
+    height: 15px;
+}
+
+.dot.active
+{
+    font-size: 2.5rem;
+    color: gainsboro;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 5px;
+}
+
+.dot:hover
+{
+    font-size: 2.5rem;
+    color: gainsboro;
+    font-family: 'Poppins';
+    text-align: center;
+
+    margin: 5px;
+
+    cursor: pointer;
 }

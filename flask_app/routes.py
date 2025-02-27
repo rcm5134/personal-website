@@ -48,6 +48,16 @@ def loadfilters():
     
     return json.dumps({'success':1, 'filters': result})
 
+@app.route('/loadfeaturedprojects', methods = ["POST", "GET"])
+def loadfeaturedprojects():
+
+    form_fields = dict((key, request.form.getlist(key)[0]) for key in list(request.form.keys()))
+
+    query = "SELECT * FROM projects WHERE featured = 1"
+
+    result = db.query(query)
+
+    return json.dumps({'success':1, 'projects': result})
 
 
 #######################################################################################

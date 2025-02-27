@@ -29,13 +29,11 @@ def create_app(debug=False):
 	db = database()
 	db.createTables(purge=True)
 
-	#db.createUser("guest@email.com", "password")
-	db.createProject("Pacman AI Maze Search", "pacman.png", 'Description', "https://www.github.com", ['Python'])
-	db.createProject("Connect Four Machine Learning", "pacman.png", 'Description', "https://www.github.com", ['Python'])
-	db.createProject("Game", "pacman.png", 'Description', "https://www.google.com", ["C#", "Unity"])
-	db.createProject("Traffic Jam Assist Prototype", "pacman.png", 'Description', "https://www.google.com", ["C#", "Unity", "UML"])
-	db.createProject("Kanban Board Website", "pacman.png", 'Description', "https://www.google.com", ["JavaScript", "SQL", "CSS", "HTML", "Python"])
-	
+	db.createProject("Pacman AI Maze Search", "pacman.png", 'Description', "https://www.github.com", 0,['Python'])
+	db.createProject("Connect Four Machine Learning", "pacman.png", 'Description', "https://github.com/kjowak/cse-404-fs24-connect-four-bot", 1,['Python'])
+	db.createProject("Game", "pacman.png", 'Description', "https://www.google.com", 1, ["C#", "Unity"])
+	db.createProject("Traffic Jam Assist Prototype", "pacman.png", 'Description', "https://cse.msu.edu/~tamayoa3/prototype.html", 1, ["C#", "Unity", "UML"])
+	db.createProject("Kanban Board Website", "pacman.png", 'Description', "https://www.google.com", 0,["JavaScript", "SQL", "CSS", "HTML", "Python"])
 
 	socketio.init_app(app)
 

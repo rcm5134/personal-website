@@ -4,12 +4,33 @@
 
 {% block maincontent %}
       <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/home.css') }}">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
       <div class="mainDiv">
-          
+          <div class="infoDiv">
+            <a class="featuredText">About Me</a>
+          </div>
+
+          <div id="featuredProjectContainer">
+            <a class="featuredText">Featured Projects</a>
+
+
+
+            <div id="progressDiv">
+                  
+            </div>
+  
+            <div class="gotoProjectsDiv">
+                 <a class="gotoText" href="/projects">Go To Projects</a>
+            </div>
+          </div>
       </div>
 
+
 {% endblock %}
+
+
 
 
