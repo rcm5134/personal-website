@@ -38,8 +38,9 @@
 }
 
 .featuredProject {
-    
-    height: 350px;
+
+    height: auto;
+    padding-bottom: 10px;
     width: 50%;
 
     min-width: 300px;
@@ -69,7 +70,8 @@
 
 .featuredProject:hover
 {
-    height: 400px;
+    height: auto;
+    padding-bottom: 10px;
     font-size: 1.4rem;
     color: #f0ede6;
     font-family: 'Poppins';
@@ -101,7 +103,7 @@
 }
 
 .projectDescription {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: #f0ede6;
     font-family: 'Poppins';
     text-align: center;
@@ -110,7 +112,7 @@
 }
 
 .featuredProject:hover .projectDescription {
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     color: #f0ede6;
     font-family: 'Poppins';
     text-align: center;
@@ -147,6 +149,41 @@
     align-items: center;
 
     backdrop-filter: blur(10px);
+
+
+}
+
+.innerInfoDiv
+{
+    margin-top: 10px;
+    height: auto;
+    width: 100%;
+    max-width: 80%;
+    background-image: linear-gradient(to bottom right, #31bfc4, #642aeb);
+    justify-content: center;
+    justify-items: center;
+
+    text-align: center;
+
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.profilePicLine
+{
+    width: 90%;
+    margin: 10px;
+    height: 1px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.aboutText
+{
+    font-size: 1.0rem;
+    color: #ffffff;
+    font-family: 'Poppins';
+    text-align: center;
 }
 
 #progressDiv
@@ -236,6 +273,22 @@
     height: 50px;
     width: 50px;
     opacity: 1;
+}
+
+.profilePic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 10%;
+
+}
+
+.profilePicDiv {
+    height: 350px;
+    width: 300px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {

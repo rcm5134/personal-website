@@ -11,10 +11,16 @@
 
       <div class="mainDiv">
           <div class="infoDiv">
-              <a class="featuredText">About Me</a>
 
-
-              <a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula turpis at sapien placerat, nec auctor orci fermentum. Blah blah widgets and gizmos, totally revolutionary synergy. Random words inserted here to make this look somewhat meaningful. Eventually, something important might replace this, but for now, it's just filler text doing its job. </a>
+              <div class="innerInfoDiv">
+                  <div class="profilePicDiv">
+                      <img src="{{ url_for('static', filename='main/images/riley.png') }}" alt="Picture of Riley Moorman" class="profilePic">
+                  </div>
+                  <hr class="profilePicLine">
+                  <a class="aboutText">Welcome!</a>
+                  <br>
+                  <a class="aboutText">I'm a Senior at Michigan State University studying Computer Science. I made this website to display projects I have worked on!</a>
+              </div>
 
 
           </div>

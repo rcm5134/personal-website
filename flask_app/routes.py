@@ -75,9 +75,6 @@ def home():
 def projects():
 	return render_template('projects.html', active_page='projects')
 
-@app.route('/contact')
-def contact():
-	return render_template('contact.html', active_page='contact')
 
 @app.route("/static/<path:path>")
 def static_dir(path):

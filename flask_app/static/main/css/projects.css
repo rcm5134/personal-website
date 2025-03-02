@@ -81,7 +81,8 @@
 
 
 .project {
-    height: 350px;
+    height: auto;
+
     width: 85%;
     margin: 2.5%;
 
@@ -100,7 +101,8 @@
 
 .project:hover
 {
-    height: 400px;
+    height: auto;
+    padding-bottom: 10px;
     font-size: 1.4rem;
     color: #f0ede6;
     font-family: 'Poppins';
@@ -134,7 +136,7 @@
 }
 
 .projectDescription {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: #f0ede6;
     font-family: 'Poppins';
     text-align: center;
@@ -143,7 +145,7 @@
 }
 
 .project:hover .projectDescription {
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     color: #f0ede6;
     font-family: 'Poppins';
     text-align: center;
