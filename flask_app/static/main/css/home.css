@@ -41,6 +41,8 @@
     
     height: 350px;
     width: 50%;
+
+    min-width: 300px;
     margin: 2.5%;
 
     background-image: linear-gradient(to bottom right, #31bfc4, #642aeb);
@@ -172,12 +174,20 @@
     flex: row;
     
     justify-items: center;
+    align-items: center;
 
     background-image: linear-gradient(to right, #31bfc4, #642aeb);
 
     cursor: pointer;
 
     border-radius: 5px;
+
+    transition: border-radius 350ms;
+}
+
+.gotoProjectsDiv:hover
+{
+    border-radius: 15px;
 }
 
 .gotoText
@@ -192,39 +202,51 @@
     cursor: pointer;
 
     text-align: center;
+
+    margin-right: 10px;
+
+    transition: font-size 350ms, margin 350ms, margin-left 350ms;
 }
 
-.dot
+.gotoProjectsDiv:hover .gotoText
 {
-    font-size: 2.0rem;
-    color: gainsboro;
+    font-size: 1.5rem;
+    color: #ffffff;
     font-family: 'Poppins';
     text-align: center;
 
-    margin: 5px;
-    transition: font-size 350ms;
-
-    height: 15px;
-}
-
-.dot.active
-{
-    font-size: 2.5rem;
-    color: gainsboro;
-    font-family: 'Poppins';
-    text-align: center;
-
-    margin: 5px;
-}
-
-.dot:hover
-{
-    font-size: 2.5rem;
-    color: gainsboro;
-    font-family: 'Poppins';
-    text-align: center;
-
-    margin: 5px;
+    margin: 15px;
 
     cursor: pointer;
+
+    text-align: center;
+
+    margin-right: 5px;
+}
+
+.arrow {
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+
+    transition: height 350ms, width 350ms, opacity 350ms;
+}
+
+.gotoProjectsDiv:hover .arrow {
+    height: 50px;
+    width: 50px;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .mainDiv
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .featuredText
+    {
+        width: fit-content;
+    }
 }

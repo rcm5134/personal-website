@@ -5,3 +5,4 @@ flask-socketio
 eventlet==0.30.2
 Flask-Failsafe
 mysql-connector-python
+

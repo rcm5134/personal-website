@@ -125,6 +125,8 @@
     height: 160px;
     width: 270px;
 
+    padding: 10px;
+
     margin-bottom: 10px;
     border-radius: 5px;
 
@@ -194,18 +196,19 @@ main {
 */
 
 @media (max-width: 768px) {
-    .projectsContainer {
-    
+    #projectsContainer {
+
         width: 75%;
         height: 500px;
         margin-top: 35px;
         border-radius: 10px;
-    
+
         overflow-y: scroll;
         overflow-x: hidden;
-    
+
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        
+        justify-items: center;
+
     }
 }

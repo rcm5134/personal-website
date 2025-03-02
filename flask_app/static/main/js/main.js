@@ -2,6 +2,7 @@ let projects = {};
 let currentIndex = 0;
 let projectDiv = document.getElementById("featuredProjectContainer");
 
+
 function LoadFeaturedProjects()
 {
     var data_d = {};
@@ -37,8 +38,6 @@ function NextProject() {
             }
         }, 500); // Match transition duration
     }
-
-
 
     currentIndex++;
     if (currentIndex >= projects.length) {
@@ -77,13 +76,13 @@ function LoadProject()
     div.appendChild(img);
     div.appendChild(a2);
 
-
     projectDiv.insertBefore(div, projectDiv.children[1]);
 
     setTimeout(() => {
         div.classList.remove("fade-out");
         div.classList.add("fade-in");
     }, 50);
+
 }
 
 

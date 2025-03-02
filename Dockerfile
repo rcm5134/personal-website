@@ -25,6 +25,14 @@ WORKDIR /app
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
+
+# Install Node.js and npm
+RUN apt install -y nodejs npm
+
+# Install github-calendar
+RUN npm install --save github-calendar
+
+
 # Open ports, set environment variables, start gunicorn.
 EXPOSE 8080 
 ENV PORT 8080
